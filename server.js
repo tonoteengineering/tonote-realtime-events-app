@@ -157,8 +157,9 @@ io.on("connection", (socket) => {
 	socket.on(events.NOTARY_COMPLETE_SESSION, () => {
 		socket.to(room).emit(events.NOTARY_COMPLETE_SESSION);
 	});
-	socket.on(events.UPDATE_DOCUMENT_DISPLAYED, () => {
-		socket.to(room).emit(events.UPDATE_DOCUMENT_DISPLAYED);
+	socket.on(events.UPDATE_DOCUMENT_DISPLAYED, (data) => {
+		console.log(data);
+		socket.to(room).emit(events.UPDATE_DOCUMENT_DISPLAYED, data);
 	});
 	socket.on(events.NOTARY_CANCEL_SESSION, () => {
 		socket.to(room).emit(events.NOTARY_CANCEL_SESSION);
