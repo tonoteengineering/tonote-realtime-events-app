@@ -159,7 +159,7 @@ io.on("connection", (socket) => {
 	});
 	socket.on("UPDATE_DOCUMENT_DISPLAYED", (data) => {
 		// console.log(data);
-		io.emit("UPDATE_DOCUMENT_DISPLAYED", data);
+		socket.to(room).emit('UPDATE_DOCUMENT_DISPLAYED', data);
 	});
 	socket.on(events.NOTARY_CANCEL_SESSION, () => {
 		socket.to(room).emit(events.NOTARY_CANCEL_SESSION);
@@ -195,3 +195,4 @@ mongoose.connection.on("error", (err) => {
 });
 
 app.use(errorHandler);
+
